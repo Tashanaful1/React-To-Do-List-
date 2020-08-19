@@ -1,86 +1,85 @@
 import React from 'react';
-import Todos from './Components/Todos';
 import Header from './Components/Header';
-import TodoItem from './Components/TodoItem';
+import Todos from './Components/Todos';
 import AddTodo from './Components/AddTodo';
-import './App.css';
+import { v4 as uuidv4 } from 'uuid';
 
 
 class App extends React.Component {
+    state = {
+        todos: [
+            {
+                id: 1,
+                title: 'Finalize on a dress for the wedding',
+                completed: false
+            },
+            {
+                id: 2,
+                title: 'Contact the bride to make sure she is ready for the wedding',
+                completed: false
+            },
+            {
+                id: 3,
+                title: 'Schedule hair appointment',
+                completed: false
+            },
+            {
+                id: 4,
+                title: 'Schedule makeup appointment',
+                completed: false
+            }
+        ]
 
-  state = {
-    todos: [
-      {
-        id: 1,
-        title: 'Set hair appointment',
-        completed: false
-      },
-      {
-        id: 2,
-        title: 'Set make up appointment',
-        completed: false
-      },
-      {
-        id: 3,
-        title: 'Order shoes for the wedding',
-        completed: false
-      },
-      {
-        id: 4,
-        title: 'Order a gift from the wedding registry',
-        completed: false
-      }
-    ]
-  }
-
-  markComplete = (id) => {
-    this.setState({
-      todos: this.state.todos.map(todo => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed
-        }
-        return todo;
-      })
-    })
-
-  }
-  delTodo = (id) => {
-    this.setState({
-      todos: [...this.state.todos.filter(todo => todo.id !== id)]
-    });
-  }
-
-  addTodo = (title) => {
-
-
-    const newTodo = {
-      id: 5,
-      title: title,
-      completed: false,
     }
-    this.setState({ todos: [...this.state.todos, newTodo] })
 
 
-  }
 
-  render() {
-    return (
-      <div className="App">
-        <div className="container">
-          <Header />
-          <Todos todos={this.state.todos} markComplete={this.markComplete}
-            delTodo={this.delTodo} />
-          <AddTodo addTodo={this.addTodo} />
+    markComplete = (id) => {
+        this.setState({
+            todos: this.state.todos.map(todo => {
+                if (todo.id === id) {
+                    todo.completed = !todo.completed
+                }
+                return todo;
+            })
+        })
 
-        </div>
+    }
 
-      </div>
-    )
-  }
+
+    delTodo = (id) => {
+        this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] })
+    }
+
+
+    addTodo = (title) => {
+        const newTodo = {
+            id: uuidv4(),
+            title: title,
+            completed: false
+        }
+        this.setState({ todos: [...this.state.todos, newTodo] })
+    }
+
+
+    editTodo = (id) => {
+        this.setState({
+
+        })
+        console.log(id);
+
+    }
+
+    render() {
+        return (
+            <div>
+                <Header />
+                <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} editTodo={this.editTodo} />
+                <AddTodo addTodo={this.addTodo} />
+            </div>
+
+        )
+    }
 }
-
-
-
-
 
 export default App;
