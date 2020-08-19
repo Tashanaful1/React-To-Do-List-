@@ -62,12 +62,15 @@ class App extends React.Component {
     }
 
 
-    editTodo = (id) => {
-        this.setState({
-
+    editTodo = (targetId, targetValue) => {
+        const updatedTodos = this.state.todos.map((todo) => {
+            if (todo.id === targetId) {
+                return { ...todo, title: targetValue }
+            } else {
+                return todo
+            }
         })
-        console.log(id);
-
+        this.setState({ todos: updatedTodos })
     }
 
     render() {
