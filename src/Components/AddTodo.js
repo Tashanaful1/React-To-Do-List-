@@ -1,42 +1,4 @@
 import React from 'react';
 
-class AddTodo extends React.Component {
-    state = {
-        title: ''
-    }
 
 
-    onChange = (e) => this.setState({ title: e.target.value });
-
-    onSubmit = (e) => {
-        e.preventDefault();
-        this.props.addTodo(this.state.title);
-        this.setState({ title: '' });
-
-    }
-
-    render() {
-        return <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
-            <input
-                type="text"
-                placeholder="Add Task..."
-                style={{ flex: '8', padding: "5px" }}
-                name="title"
-                value={this.state.title}
-                onChange={this.onChange}
-            />
-            <input
-                type='submit'
-                value='Submit'
-                className='btn'
-                style={{ flex: '1' }}
-            // onChange={}
-            />
-
-        </form>
-
-
-    }
-}
-
-export default AddTodo;

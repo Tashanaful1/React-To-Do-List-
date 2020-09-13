@@ -1,20 +1,21 @@
 import React from 'react';
 
 
+
 function Header() {
     return (
-        <header style={headerStyle}>
+        <Header style={headerStyle}>
             <h1>Todo List</h1>
-        </header>
+        </Header>
     )
 }
 
 
 const headerStyle = {
-    textAlign: 'center',
-    padding: '10px',
     color: 'white',
-    backgroundColor: '#1f1f1f'
+    backgroundColor: 'gray',
+    textAlign: 'center',
+    padding: '10px'
 }
 
 export default Header;
