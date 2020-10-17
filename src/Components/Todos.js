@@ -4,9 +4,9 @@ import TodoItem from './TodoItem';
 
 
 class Todos extends React.Component {
-    reder() {
+    render() {
         return this.props.todos.map((todo) => (
-            <TodoItem todo={todo} />
+            <TodoItem todo={todo} key={todo.id} markComplete={this.props.markComplete} delTodo={this.props.delTodo} />
         ));
     }
 }
